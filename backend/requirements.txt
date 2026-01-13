@@ -1,0 +1,21 @@
+# FastAPI and server
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+
+# Mistral AI SDK
+mistralai==1.2.5
+
+# Vector database
+chromadb==0.5.23
+
+# Document processing
+pypdf==5.1.0
+
+# Configuration
+pydantic-settings==2.6.1
+
+# Testing
+pytest==8.3.3
+pytest-asyncio==0.24.0
+httpx==0.27.2
