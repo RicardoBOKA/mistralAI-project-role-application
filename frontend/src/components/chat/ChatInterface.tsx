@@ -48,8 +48,17 @@ export function ChatInterface({ hasDocuments }: ChatInterfaceProps) {
       for await (const event of api.chat.stream(content, history)) {
         if (event.type === "sources") {
           sources = event.data as SourceChunk[];
+          // Update immediately with sources
+          setMessages((prev) =>
+            prev.map((m) =>
+              m.id === assistantId
+                ? { ...m, sources }
+                : m
+            )
+          );
         } else if (event.type === "content") {
           fullContent += event.data as string;
+          // Use flushSync to force immediate render for each chunk
           setMessages((prev) =>
             prev.map((m) =>
               m.id === assistantId

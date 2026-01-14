@@ -88,6 +88,8 @@ Guidelines:
         history: list[ChatMessage] | None = None,
     ) -> AsyncGenerator[dict[str, Any], None]:
         """Generate a streaming response with SSE format."""
+        import asyncio
+        
         messages = self.build_rag_prompt(question, sources, history)
 
         # First, send sources metadata
@@ -95,6 +97,9 @@ Guidelines:
             "type": "sources",
             "data": [source.model_dump() for source in sources],
         }
+        
+        # Small delay to ensure sources are sent first
+        await asyncio.sleep(0.01)
 
         # Stream the response
         stream = self.mistral.chat.stream(
@@ -111,6 +116,8 @@ Guidelines:
                     "type": "content",
                     "data": content,
                 }
+                # Force async yield to allow event loop to flush
+                await asyncio.sleep(0)
 
         # Signal completion
         yield {

@@ -59,7 +59,7 @@ cd mistralAI-project-role-application
 #### 2. Configure environment
 
 ```bash
-cp env.example .env
+cp .env.example .env
 cp backend/env.example backend/.env
 cp frontend/env.example frontend/.env.local
 # Edit .env files and add your MISTRAL_API_KEY
