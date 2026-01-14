@@ -74,7 +74,7 @@ export default function Home() {
               </Button>
               <Button variant="ghost" size="sm" asChild>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/RicardoBOKA/mistralAI-project-role-application"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-muted-foreground"
