@@ -36,8 +36,7 @@ class Settings(BaseSettings):
     # API Configuration
     api_host: str = "0.0.0.0"
     api_port: int = 8001
-    # cors_origins: list[str] = ["http://localhost:3000"]
-    cors_origins: list[str] = ["*"]
+    cors_origins: list[str] = ["http://localhost:3000"]
 
     def ensure_directories(self) -> None:
         """Create necessary directories if they don't exist."""
