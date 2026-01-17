@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { User, Sparkles, FileText, ChevronDown } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import {
   Accordion,
   AccordionContent,
@@ -56,14 +57,26 @@ export function MessageBubble({ message }: MessageBubbleProps) {
               : "bg-secondary rounded-tl-md"
           )}
         >
-          <p
-            className={cn(
-              "text-sm whitespace-pre-wrap",
-              message.isStreaming && "typing-cursor"
-            )}
-          >
-            {message.content || (message.isStreaming ? "" : "...")}
-          </p>
+          {isUser ? (
+            <p className="text-sm whitespace-pre-wrap">
+              {message.content || "..."}
+            </p>
+          ) : (
+            <div
+              className={cn(
+                "prose prose-sm dark:prose-invert max-w-none",
+                "prose-p:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0",
+                "prose-headings:my-2 prose-headings:font-semibold",
+                "prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-xs",
+                "prose-pre:bg-muted prose-pre:p-3 prose-pre:rounded-lg",
+                message.isStreaming && "typing-cursor"
+              )}
+            >
+              <ReactMarkdown>
+                {message.content || (message.isStreaming ? "" : "...")}
+              </ReactMarkdown>
+            </div>
+          )}
         </div>
 
         {/* Sources */}
