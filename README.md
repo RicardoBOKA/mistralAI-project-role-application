@@ -7,6 +7,10 @@ A modern document Q&A application powered by **Mistral AI**, built with **FastAP
 ![Frontend](https://img.shields.io/badge/Frontend-Next.js%2014-black)
 ![AI](https://img.shields.io/badge/AI-Mistral%20AI-FF7000)
 
+## Application Overview
+
+<img src="./frontend/public/img/image.png" alt="Aperçu de l'application" width="100%" />
+
 ## Features
 
 - **Document Upload**: Drag-and-drop PDF and TXT files
@@ -16,22 +20,6 @@ A modern document Q&A application powered by **Mistral AI**, built with **FastAP
 - **Streaming Responses**: Real-time answer generation with SSE
 - **Modern UI**: Clean, professional interface with dark theme
 
-## Architecture
-
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│                 │     │                 │     │                 │
-│    Frontend     │────▶│     Backend     │────▶│   Mistral AI    │
-│   (Next.js)     │     │   (FastAPI)     │     │                 │
-│                 │◀────│                 │◀────│                 │
-└─────────────────┘     └────────┬────────┘     └─────────────────┘
-                                 │
-                                 ▼
-                        ┌─────────────────┐
-                        │    ChromaDB     │
-                        │ (Vector Store)  │
-                        └─────────────────┘
-```
 
 ### RAG Workflow
 
